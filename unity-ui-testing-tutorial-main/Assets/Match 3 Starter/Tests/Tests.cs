@@ -14,7 +14,7 @@ public class Tests
     private Sprite candyA; 
     private Sprite candyB; 
 
-    [SetUp]
+    [SetUp] 
     public void SetUp()
     {
         // instancia de BM
@@ -85,6 +85,33 @@ public class Tests
         bool isMatch = tileComponent1.GetCandyType() == tileComponent2.GetCandyType() &&
                         tileComponent2.GetCandyType() == tileComponent3.GetCandyType();
 
-        Assert.IsTrue(isMatch, "No se detecto combinacion");
+        Assert.IsTrue(isMatch, "No se detecto combinacion (3)");
     }
+
+    [Test]
+    public void CombinacionFichasCuatro(){
+        Sprite matchType = Resources.Load<Sprite>("Sprites/Characters");
+
+        GameObject tile1 =  new GameObject();
+        GameObject tile2 =  new GameObject();
+        GameObject tile3 =  new GameObject();
+        GameObject tile4 =  new GameObject();
+
+        var tileComponent1 = tile1.AddComponent<Tile>();
+        var tileComponent2 = tile2.AddComponent<Tile>();
+        var tileComponent3 = tile3.AddComponent<Tile>();
+        var tileComponent4 = tile3.AddComponent<Tile>();
+
+        tileComponent1.SetCandyType(matchType);
+        tileComponent2.SetCandyType(matchType);
+        tileComponent3.SetCandyType(matchType);
+        tileComponent4.SetCandyType(matchType);
+
+        bool isMatch = tileComponent1.GetCandyType() == tileComponent2.GetCandyType() &&
+                        tileComponent2.GetCandyType() == tileComponent3.GetCandyType()&&
+                        tileComponent3.GetCandyType() == tileComponent4.GetCandyType();
+
+        Assert.IsTrue(isMatch, "No se detecto combinacion (4)");
+    }
+
 }
